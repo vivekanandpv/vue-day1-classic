@@ -8,12 +8,13 @@
   </head>
   <body>
     <div id="root">
+      <!-- everything is taken as literal value -->
       <vx-card
         v-for="i in 5"
         v-bind:key="i"
-        v-bind:name="'Component-'+i"
-        v-bind:contact="1234567890"
-        v-bind:city="'City-'+i"
+        name="Component"
+        contact="1234567890"
+        city="City"
       ></vx-card>
     </div>
 
