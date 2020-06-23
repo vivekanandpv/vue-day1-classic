@@ -7,11 +7,25 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <label>Title:</label>
+      <input type="text" v-model="title" />
+
+      <hr />
+      <p>Title: {{title}} ({{length}})</p>
+    </div>
 
     <script>
       var app = new Vue({
         el: '#root',
+        data: {
+          title: '',
+        },
+        computed: {
+          length: function () {
+            return this.title ? this.title.length : 'NA';
+          },
+        },
       });
     </script>
   </body>
