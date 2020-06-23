@@ -5,13 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue.js Learning Day 1</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      .card {
+        width: 100px;
+        height: 50px;
+        background-color: seagreen;
+        padding: 30px 30px;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Fired only once -->
+      <button @click.once="clickHandler('once')">Click 1!</button>
+      <hr />
+      <!-- No page reload; useful for form submission -->
+      <button @click.prevent="clickHandler('prevent')">Click 2!</button>
+      <hr />
+      <!-- Child events are not considered -->
+      <div @click.self="clickHandler('self')" class="card">
+        <button>Click 3!</button>
+      </div>
+      <hr />
+      <!-- Child events are prioritized for parent -->
+      <div @click.capture="clickHandler('capture outer')" class="card">
+        <button @click="clickHandler('capture inner')">Click 3!</button>
+      </div>
+    </div>
 
     <script>
       var app = new Vue({
         el: '#root',
+        methods: {
+          clickHandler: function (args) {
+            console.log('Clicked', args);
+          },
+        },
       });
     </script>
   </body>
