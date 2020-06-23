@@ -19,7 +19,7 @@
       <hr />
 
       <ul>
-        <li v-for="(city, index) in cities">{{index}} {{city}}</li>
+        <li v-for="city in cities" v-if="city.id % 2 !== 0">{{city.name}}</li>
       </ul>
     </div>
 
@@ -30,7 +30,16 @@
           //data properties
           greeting: 'Hello friends!',
           flag: false,
-          cities: ['Bengaluru', 'Chennai', 'Delhi'],
+          cities: [
+            {
+              id: 1,
+              name: 'Bengaluru',
+            },
+            {
+              id: 2,
+              name: 'Delhi',
+            },
+          ],
         },
         methods: {
           //functions
@@ -39,10 +48,6 @@
           },
         },
       });
-
-      setInterval(() => {
-        app.flag = !app.flag;
-      }, 1000);
     </script>
   </body>
 </html>
