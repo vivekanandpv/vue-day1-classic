@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue.js Learning Day 1</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      .custom {
+        color: red;
+        font-size: 25px;
+      }
+    </style>
   </head>
   <body>
     <div id="root">
@@ -16,8 +22,8 @@
         el: '#root',
         data: {
           //data properties
-          greeting: 'Hello there!',
-          counter: 0,
+          greeting: 'custom',
+          counter: 1000,
         },
         methods: {
           //functions
