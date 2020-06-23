@@ -8,10 +8,8 @@
   </head>
   <body>
     <div id="root">
-      <a :[domproperty]="link">Go to Google!</a>
-      <p :id="'custom-id-'+i" v-for="i in 10" @click="clickHandler">
-        Paragraph: {{i}}
-      </p>
+      <p v-once>One-time binding {{link}}</p>
+      <p>Normal binding {{link}}</p>
     </div>
 
     <script>
@@ -22,12 +20,11 @@
           domproperty: 'href',
           link: 'http://google.com',
         },
-        methods: {
-          clickHandler: function (e) {
-            alert(`You clicked on: ${e.target.textContent}`);
-          },
-        },
       });
+
+      setTimeout(() => {
+        app.link = 'I have changed the link!';
+      }, 1000);
     </script>
   </body>
 </html>
