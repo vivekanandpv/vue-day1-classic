@@ -10,6 +10,7 @@
     <div id="root">
       <p v-if="isActive">Active member</p>
       <p v-else>Not an active member</p>
+      <p v-show="!isActive">Active member using v-show</p>
     </div>
 
     <script>
