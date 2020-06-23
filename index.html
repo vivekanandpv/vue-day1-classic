@@ -15,7 +15,7 @@
     </div>
 
     <script>
-      Vue.component('vx-card', {
+      var VxCard = {
         props: ['value'],
         methods: {
           localHandler: function () {
@@ -24,7 +24,7 @@
         },
         template:
           '<div><h3>{{value}}</h3> <button @click="localHandler">Increment</button></div>',
-      });
+      };
 
       var app = new Vue({
         el: '#root',
@@ -36,6 +36,9 @@
             console.log('Custom args', args);
             ++this.counter;
           },
+        },
+        components: {
+          'vx-card': VxCard,
         },
       });
     </script>
