@@ -8,14 +8,24 @@
   </head>
   <body>
     <div id="root">
-      <p v-bind:id="'custom-id-'+i" v-for="i in 10">Paragraph: {{i}}</p>
+      <a :[domproperty]="link">Go to Google!</a>
+      <p :id="'custom-id-'+i" v-for="i in 10" @click="clickHandler">
+        Paragraph: {{i}}
+      </p>
     </div>
 
     <script>
       var app = new Vue({
         el: '#root',
         data: {
+          //Why is this domproperty and not domProperty?!
+          domproperty: 'href',
           link: 'http://google.com',
+        },
+        methods: {
+          clickHandler: function (e) {
+            alert(`You clicked on: ${e.target.textContent}`);
+          },
         },
       });
     </script>
