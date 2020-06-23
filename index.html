@@ -14,7 +14,12 @@
   </head>
   <body>
     <div id="root">
-      <input type="text" v-bind:value="counter" v-bind:class="greeting" />
+      <input
+        type="text"
+        v-bind:value="counter"
+        v-bind:class="greeting"
+        v-on:input="inputHandler"
+      />
     </div>
 
     <script>
@@ -24,9 +29,15 @@
           //data properties
           greeting: 'custom',
           counter: 1000,
+          person: {
+            age: 95,
+          },
         },
         methods: {
           //functions
+          inputHandler: (e) => {
+            console.log('Input', e);
+          },
         },
       });
     </script>
