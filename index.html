@@ -8,9 +8,7 @@
   </head>
   <body>
     <div id="root">
-      <p>{{greeting}}</p>
-      <hr />
-      <p>{{counter}}</p>
+      <input type="text" v-bind:value="counter" v-bind:class="greeting" />
     </div>
 
     <script>
@@ -25,14 +23,6 @@
           //functions
         },
       });
-
-      setTimeout(() => {
-        app.greeting = 'Changed';
-      }, 5000);
-
-      setInterval(() => {
-        ++app.counter;
-      }, 1000);
     </script>
   </body>
 </html>
