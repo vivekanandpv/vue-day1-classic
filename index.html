@@ -7,11 +7,29 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <label>Choose username</label>
+      <input type="text" v-model="username" />
+      <p>Your Email: {{email}}</p>
+      <p>Your Username: {{username}}</p>
+    </div>
 
     <script>
       var app = new Vue({
         el: '#root',
+        data: {
+          email: '',
+        },
+        computed: {
+          username: {
+            get: function () {
+              return this.email ? this.email.split('@')[0] : '';
+            },
+            set: function (value) {
+              this.email = value ? value + '@my-app.com' : '';
+            },
+          },
+        },
       });
     </script>
   </body>
