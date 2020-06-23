@@ -7,11 +7,23 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <h3>You entered: {{message}}</h3>
+      <hr />
+      <input type="text" v-on:input="inputHandler" />
+    </div>
 
     <script>
       var app = new Vue({
         el: '#root',
+        data: {
+          message: '',
+        },
+        methods: {
+          inputHandler: function (e) {
+            this.message = e.target.value;
+          },
+        },
       });
     </script>
   </body>
