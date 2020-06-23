@@ -14,12 +14,13 @@
   </head>
   <body>
     <div id="root">
-      <input
-        type="text"
-        v-bind:value="counter"
-        v-bind:class="greeting"
-        v-on:input="inputHandler"
-      />
+      <p v-if="flag">{{greeting}}</p>
+
+      <hr />
+
+      <ul>
+        <li v-for="(city, index) in cities">{{index}} {{city}}</li>
+      </ul>
     </div>
 
     <script>
@@ -27,11 +28,9 @@
         el: '#root',
         data: {
           //data properties
-          greeting: 'custom',
-          counter: 1000,
-          person: {
-            age: 95,
-          },
+          greeting: 'Hello friends!',
+          flag: false,
+          cities: ['Bengaluru', 'Chennai', 'Delhi'],
         },
         methods: {
           //functions
@@ -40,6 +39,10 @@
           },
         },
       });
+
+      setInterval(() => {
+        app.flag = !app.flag;
+      }, 1000);
     </script>
   </body>
 </html>
