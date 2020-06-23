@@ -7,12 +7,26 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <p v-if="counter < 3">0 < Counter ({{counter}}) < 3</p>
+      <p v-else-if="counter < 6">3 <= Counter ({{counter}}) < 6</p>
+      <p v-else>Counter ({{counter}}) >= 6</p>
+    </div>
 
     <script>
       var app = new Vue({
         el: '#root',
+        data: {
+          counter: 0,
+        },
       });
+
+      setInterval(() => {
+        ++app.counter;
+        if (app.counter === 10) {
+          app.counter = 0;
+        }
+      }, 1000);
     </script>
   </body>
 </html>
