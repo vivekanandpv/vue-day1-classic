@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js Learning Day 1</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="root">
+      <p>{{greeting}}</p>
+      <hr />
+      <p>{{counter}}</p>
+    </div>
+
+    <script>
+      var app = new Vue({
+        el: '#root',
+        data: {
+          //data properties
+          greeting: 'Hello there!',
+          counter: 0,
+        },
+        methods: {
+          //functions
+        },
+      });
+
+      setTimeout(() => {
+        app.greeting = 'Changed';
+      }, 5000);
+
+      setInterval(() => {
+        ++app.counter;
+      }, 1000);
+    </script>
+  </body>
+</html>
