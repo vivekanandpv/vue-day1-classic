@@ -7,11 +7,47 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <template v-for="person in persons">
+        <h3>{{person.name}}</h3>
+        <p>Gender: {{person.gender === 'male' ? 'M' : 'F'}}</p>
+        <p>ID: {{person.id}}</p>
+        <hr />
+      </template>
+    </div>
 
     <script>
       var app = new Vue({
         el: '#root',
+        data: {
+          persons: [
+            {
+              id: 1,
+              name: 'Rajeev',
+              gender: 'male',
+            },
+            {
+              id: 2,
+              name: 'Raksha',
+              gender: 'female',
+            },
+            {
+              id: 3,
+              name: 'Sandeep',
+              gender: 'male',
+            },
+            {
+              id: 4,
+              name: 'Kala',
+              gender: 'female',
+            },
+            {
+              id: 5,
+              name: 'Malini',
+              gender: 'female',
+            },
+          ],
+        },
       });
     </script>
   </body>
