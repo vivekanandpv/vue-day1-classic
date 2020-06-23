@@ -15,12 +15,6 @@
   <body>
     <div id="root">
       <p v-if="flag">{{greeting}}</p>
-
-      <hr />
-
-      <ul>
-        <li v-for="city in cities" v-if="city.id % 2 !== 0">{{city.name}}</li>
-      </ul>
     </div>
 
     <script>
