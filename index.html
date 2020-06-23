@@ -8,18 +8,26 @@
   </head>
   <body>
     <div id="root">
-      <vx-card v-for="i in 5" v-bind:key="i"></vx-card>
+      <vx-card
+        v-for="i in 5"
+        v-bind:key="i"
+        v-bind:name="'Component-'+i"
+        v-bind:contact="1234567890"
+        v-bind:city="'City-'+i"
+      ></vx-card>
     </div>
 
     <script>
       Vue.component('vx-card', {
-        data: function () {
-          return {
-            name: 'Default Name',
-            contact: 1234567890,
-            city: 'Default City',
-          };
-        },
+        props: ['name', 'contact', 'city'],
+        // Double declaration (as props as well as data) is an error!
+        // data: function () {
+        //   return {
+        //     name: 'Default Name',
+        //     contact: 1234567890,
+        //     city: 'Default City',
+        //   };
+        // },
         template:
           '<div><h3>{{name}}</h3> <p>{{contact}}</p><p>{{city}}</p><hr/></div>',
       });
