@@ -7,11 +7,26 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <button @click="customHandler('Hi there!')">Click 1!</button>
+      <hr />
+      <button @click="customHandler('Hi there!', 100, {year: 1999})">
+        Click 2!
+      </button>
+      <hr />
+      <button @click="customHandler('Hi there!', 100, {year: 1999}, $event)">
+        Click 3!
+      </button>
+    </div>
 
     <script>
       var app = new Vue({
         el: '#root',
+        methods: {
+          customHandler: function (...args) {
+            console.log('Click', args);
+          },
+        },
       });
     </script>
   </body>
