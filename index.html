@@ -8,17 +8,15 @@
   </head>
   <body>
     <div id="root">
-      <p v-once>One-time binding {{link}}</p>
-      <p>Normal binding {{link}}</p>
+      <p>Without html embedding: {{tag}}</p>
+      <p>Html embedding: <span v-html="tag"></span></p>
     </div>
 
     <script>
       var app = new Vue({
         el: '#root',
         data: {
-          //Why is this domproperty and not domProperty?!
-          domproperty: 'href',
-          link: 'http://google.com',
+          tag: `<a href="http://google.com">Google!</a>`,
         },
       });
 
