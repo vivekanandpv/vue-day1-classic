@@ -7,11 +7,26 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <p v-for="(value, key, index) of car">{{index}} : {{key}} : {{value}}</p>
+      <!-- Other variants -->
+      <!-- <p v-for="(value, key) of car">{{key}} : {{value}}</p> -->
+      <!-- <p v-for="value of car">{{value}}</p> -->
+    </div>
 
     <script>
       var app = new Vue({
         el: '#root',
+        data: {
+          car: {
+            make: 'MG',
+            model: 'Hector',
+            year: 2019,
+            owner: 'Sunil',
+            color: 'Gray',
+            fuel: 'Diesel',
+          },
+        },
       });
     </script>
   </body>
