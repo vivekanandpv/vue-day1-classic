@@ -9,9 +9,13 @@
   <body>
     <div id="root">
       <vx-card name="Component">
-        <!-- v-slot directive can only be applied to template -->
-        <template v-slot:s2>
-          <h4>Slot: s2</h4>
+        <!--  Aim: Get the data declared in vx-card here, 
+              which is normally not possible.
+            
+              1. In the slot make the binding -> slot name="s2" :city="city"
+              2. In the slot content (here) pass the data as -> v-slot:s2="slotProps" -->
+        <template v-slot:s2="slotProps">
+          <h4>Slot: s2 : slot props : {{slotProps.city}}</h4>
         </template>
 
         <template v-slot:s1>
@@ -30,15 +34,22 @@
     <script>
       Vue.component('vx-card', {
         props: ['name'],
+        data: function () {
+          return {
+            city: 'Bengaluru',
+          };
+        },
 
         template: `
         <div>
           <h3>{{name}}</h3> 
           <slot name="s1"></slot>
           <p>------------------</p>
-          <slot name="s2"></slot>
+          <slot name="s2" :city="city"></slot>
           <p>------------------</p>
-          <slot></slot>
+          <slot>
+            Default: {{city}}
+          </slot>
           <hr/>
         </div>`,
       });
