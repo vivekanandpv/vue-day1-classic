@@ -15,22 +15,16 @@
         name="Component"
         contact="1234567890"
         city="City"
-      ></vx-card>
+        ><h4>This is a slotted content</h4></vx-card
+      >
     </div>
 
     <script>
       Vue.component('vx-card', {
         props: ['name', 'contact', 'city'],
-        // Double declaration (as props as well as data) is an error!
-        // data: function () {
-        //   return {
-        //     name: 'Default Name',
-        //     contact: 1234567890,
-        //     city: 'Default City',
-        //   };
-        // },
+
         template:
-          '<div><h3>{{name}}</h3> <p>{{contact}}</p><p>{{city}}</p><hr/></div>',
+          '<div><h3>{{name}}</h3> <p>{{contact}}</p><p>{{city}}</p><slot></slot><hr/></div>',
       });
 
       var app = new Vue({
