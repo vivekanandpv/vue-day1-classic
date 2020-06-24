@@ -1,3 +1,6 @@
+// Make sure you have installed: npm install -g @vue/cli-service-global
+// To run: vue serve sample.vue
+
 <template>
   <div>
     <h2>{{name}}</h2>
