@@ -9,8 +9,15 @@
   <body>
     <div id="root">
       <vx-card name="Component">
-        <!-- scoped to the source -->
-        <h4>Person: {{person}}</h4>
+        <template v-slot:s2>
+          <h4>Slot: s2</h4>
+        </template>
+
+        <template v-slot:s1>
+          <h4>Slot: s1</h4>
+        </template>
+
+        <h4>Default slot</h4>
       </vx-card>
     </div>
 
@@ -21,7 +28,11 @@
         template: `
         <div>
           <h3>{{name}}</h3> 
-          <slot>Default Slot Text: {{name}}</slot>
+          <slot name="s1"></slot>
+          <p>------------------</p>
+          <slot name="s2"></slot>
+          <p>------------------</p>
+          <slot></slot>
           <hr/>
         </div>`,
       });
