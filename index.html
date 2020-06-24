@@ -8,23 +8,19 @@
   </head>
   <body>
     <div id="root">
-      <!-- everything is taken as literal value -->
-      <vx-card
-        v-for="i in 5"
-        v-bind:key="i"
-        name="Component"
-        contact="1234567890"
-        city="City"
-        ><h4>This is a slotted content</h4></vx-card
-      >
+      <vx-card name="Component"></vx-card>
     </div>
 
     <script>
       Vue.component('vx-card', {
-        props: ['name', 'contact', 'city'],
+        props: ['name'],
 
-        template:
-          '<div><h3>{{name}}</h3> <p>{{contact}}</p><p>{{city}}</p><slot></slot><hr/></div>',
+        template: `
+        <div>
+          <h3>{{name}}</h3> 
+          <slot>Default Slot Text</slot>
+          <hr/>
+        </div>`,
       });
 
       var app = new Vue({
