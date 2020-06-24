@@ -6,12 +6,42 @@
     <title>Vue.js Learning Day 1</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
+
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <h3>{{counter}}</h3>
+      <button @click="clickHandler">Increment</button>
+    </div>
 
     <script>
       var app = new Vue({
         el: '#root',
+        data: {
+          counter: 0,
+        },
+        methods: {
+          clickHandler: function () {
+            ++this.counter;
+          },
+        },
+        beforeCreate: function () {
+          console.log('Before Create');
+        },
+        created: function () {
+          console.log('Created');
+        },
+        beforeMount: function () {
+          console.log('Before Mount');
+        },
+        mounted: function () {
+          console.log('Mounted');
+        },
+        beforeUpdate: function () {
+          console.log('Before Update');
+        },
+        updated: function () {
+          console.log('Updated');
+        },
       });
     </script>
   </body>
