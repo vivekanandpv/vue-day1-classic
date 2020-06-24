@@ -4,38 +4,100 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue.js Learning Day 1</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
-    <div id="root">
-      <vx-card
-        v-bind:value="counter"
-        @increment-counter="parentHandler($event)"
-      ></vx-card>
+    <div id="root" class="container">
+      <playground></playground>
     </div>
 
     <script>
-      Vue.component('vx-card', {
-        props: ['value'],
+      var Button = {
+        props: ['sign', 'label'],
         methods: {
           localHandler: function () {
-            this.$emit('increment-counter', 0.25);
+            this.$emit('button-click', this.sign);
           },
         },
-        template:
-          '<div><h3>{{value}}</h3> <button @click="localHandler">Increment</button></div>',
-      });
+        template: `
+          <button 
+            class="btn btn-primary mx-3" 
+            @click="localHandler('+')">
+              {{label}} ({{sign}})
+          </button>`,
+      };
+
+      var Playground = {
+        data: function () {
+          return {
+            counter: 0,
+          };
+        },
+        methods: {
+          increment: function () {
+            if (this.counter !== 20) {
+              ++this.counter;
+            } else {
+              alert('Max limit reached');
+            }
+          },
+          decrement: function () {
+            if (this.counter !== 0) {
+              --this.counter;
+            } else {
+              alert('Min limit reached');
+            }
+          },
+          customClickHandler: function (e) {
+            switch (e) {
+              case '+':
+                this.increment();
+                break;
+              case '-':
+                this.decrement();
+                break;
+
+              default:
+                alert('Invalid sign');
+                break;
+            }
+          },
+        },
+        components: {
+          'vx-button': Button,
+        },
+        template: `
+        <div class="jumbotron jumbotron-fluid mt-4">
+          <div class="container">
+            <h1 class="display-4 text-center mb-4">
+              Counter: {{counter}}
+            </h1>
+            <div class="text-center">
+              <vx-button 
+                label="Increment" 
+                sign="+" 
+                @button-click="customClickHandler">
+              </vx-button>
+              <vx-button 
+                label="Decrement" 
+                sign="-" 
+                @button-click="customClickHandler">
+              </vx-button>
+            </div>
+          </div>
+        </div>`,
+      };
 
       var app = new Vue({
         el: '#root',
-        data: {
-          counter: 0,
-        },
-        methods: {
-          parentHandler: function (args) {
-            console.log('Custom args', args);
-            ++this.counter;
-          },
+        components: {
+          playground: Playground,
         },
       });
     </script>
