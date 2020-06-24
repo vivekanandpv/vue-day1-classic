@@ -25,21 +25,33 @@
           },
         },
         beforeCreate: function () {
-          console.log('Before Create');
+          //  reactivity is not yet in place
+          console.log('Before Create', this.counter);
         },
         created: function () {
-          console.log('Created');
+          //  data, such as counter is reactive now
+          console.log('Created', this.counter);
         },
         beforeMount: function () {
-          console.log('Before Mount');
+          //  template is compiled and v-dom is ready
+          //  no data-binding, {{counter}} is plain string now
+          //  eq: ngOnInit
+          console.log('Before Mount', this.$el);
         },
         mounted: function () {
-          console.log('Mounted');
+          //  data binding completed
+          //  native dom is hooked
+          //  eq: ngAfterViewInit
+          //  use for external data-communication
+          console.log('Mounted', this.$el);
         },
         beforeUpdate: function () {
+          //  after update in the component
+          //  before DOM node is re-rendered
           console.log('Before Update');
         },
         updated: function () {
+          //  after DOM node is re-rendered
           console.log('Updated');
         },
       });
