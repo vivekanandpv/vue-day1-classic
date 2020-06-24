@@ -8,24 +8,30 @@
   </head>
   <body>
     <div id="root">
-      <p v-if="counter < 3">0 < Counter ({{counter}}) < 3</p>
-      <p v-else-if="counter < 6">3 <= Counter ({{counter}}) < 6</p>
-      <p v-else>Counter ({{counter}}) >= 6</p>
+      <p v-if="language === 'English'">English: Welcome</p>
+      <p v-else-if="language === 'Hindi'">Hindi: नमस्ते</p>
+      <p v-else-if="language === 'Kannada'">Kannada: ನಮಸ್ಕಾರ</p>
+      <p v-else-if="language === 'Tamil'">Tamil: வானகம்</p>
+      <p v-else>Fallback: Welcome!</p>
     </div>
 
     <script>
       var app = new Vue({
         el: '#root',
         data: {
+          language: '',
+          presets: ['English', 'Hindi', 'Kannada', 'Tamil', 'French'],
           counter: 0,
         },
       });
 
       setInterval(() => {
         ++app.counter;
-        if (app.counter === 10) {
+        if (app.counter === 5) {
           app.counter = 0;
         }
+
+        app.language = app.presets[app.counter];
       }, 1000);
     </script>
   </body>
