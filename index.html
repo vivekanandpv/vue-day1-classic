@@ -33,11 +33,7 @@
         },
         computed: {
           isValid: function () {
-            if (/^[0-9]+$/.test(this.phoneNumber)) {
-              return true;
-            } else {
-              return false;
-            }
+            return /^[0-9]+$/.test(this.phoneNumber);
           },
         },
       });
