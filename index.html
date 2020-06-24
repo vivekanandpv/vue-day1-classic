@@ -9,6 +9,7 @@
   <body>
     <div id="root">
       <vx-card name="Component">
+        <!-- v-slot directive can only be applied to template -->
         <template v-slot:s2>
           <h4>Slot: s2</h4>
         </template>
@@ -17,7 +18,12 @@
           <h4>Slot: s1</h4>
         </template>
 
-        <h4>Default slot</h4>
+        <!-- with default slot explicitly defined, will this show? -->
+        <!-- <h4>Default slot</h4> -->
+
+        <template v-slot:default>
+          <h4>Slot: Default, explicit</h4>
+        </template>
       </vx-card>
     </div>
 
