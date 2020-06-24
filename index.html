@@ -5,25 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vue.js Learning Day 1</title>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+      .valid {
+        color: green;
+      }
+
+      .invalid {
+        color: red;
+      }
+    </style>
   </head>
   <body>
     <div id="root">
-      <label>Title:</label>
-      <input type="text" v-model="title" />
+      <label>Phone Number:</label>
+      <input type="text" v-model="phoneNumber" />
 
       <hr />
-      <p>Title: {{title}} ({{length}})</p>
+      <p v-if="isValid" class="valid">Valid Phone Number</p>
+      <p v-else class="invalid">Invalid Phone Number</p>
     </div>
 
     <script>
       var app = new Vue({
         el: '#root',
         data: {
-          title: '',
+          phoneNumber: '',
         },
         computed: {
-          length: function () {
-            return this.title ? this.title.length : 'NA';
+          isValid: function () {
+            if (/^[0-9]+$/.test(this.phoneNumber)) {
+              return true;
+            } else {
+              return false;
+            }
           },
         },
       });
