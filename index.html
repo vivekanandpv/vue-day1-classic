@@ -8,7 +8,10 @@
   </head>
   <body>
     <div id="root">
-      <vx-card name="Component"></vx-card>
+      <vx-card name="Component">
+        <!-- scoped to the source -->
+        <h4>Person: {{person}}</h4>
+      </vx-card>
     </div>
 
     <script>
@@ -18,13 +21,16 @@
         template: `
         <div>
           <h3>{{name}}</h3> 
-          <slot>Default Slot Text</slot>
+          <slot>Default Slot Text: {{name}}</slot>
           <hr/>
         </div>`,
       });
 
       var app = new Vue({
         el: '#root',
+        data: {
+          person: 'Rajesh',
+        },
       });
     </script>
   </body>
